@@ -78,3 +78,75 @@ for letter in address_count:
         most_frequent_letter = letter
 
 print(most_frequent_letter)
+#----------------------------------------------------------------
+#Exercise 2a
+#Using the math library, calculate and print the value of  π/4 .
+#What is the value of  π/4 ?
+import math
+print(math.pi/4)
+#answer 0.7853981633974483
+
+#---------------------------------------------------------------
+
+#exercise 2b
+#Using random.uniform(), create a function rand() that generates a single float between −1 and 1.
+#Call rand() once. For us to be able to check your solution, we will use random.seed() to fix the seed value of the random number generator.
+#We include some sample code to get you started:
+
+import random
+
+random.seed(1) # Fixes the seed of the random number generator.
+
+def rand():
+   # define `rand` here!
+   return random.uniform(-1,1)
+rand()
+    
+#What is the value you get from calling rand()?
+#answer = -0.7312715117751976
+
+#----------------------------------------------------------
+
+#Exercise 2d
+#Write a function in_circle(x, origin) that determines whether a point in a two dimensional plane falls within a unit circle surrounding a given origin.
+#Your function should return a boolean True if the distance between x and origin is less than 1 and False otherwise.
+#Use distance(x, y) as defined in Exercise 2c.
+
+#Use your function to determine whether the point (1,1) lies within the unit circle centered at (0,0):
+def distance(a, b):  
+    dist = math.sqrt((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2 )
+    return dist
+    
+print(distance((0,0),(1,1)))
+def in_circle(x, origin = [0,0]):
+    return distance(x, origin) < 1
+    
+#Does the point (1,1) lie within the unit circle centered at (0,0)?
+
+def in_circle(x, origin = [0,0]):
+    if len(x) != 2:
+        return "x is not two-dimensional!"
+    elif distance(x, origin) < 1:
+        return True
+    else:
+        return False
+
+print(in_circle((1,1)))
+False
+
+#--------------------------------------------------------
+
+R = 1000
+x = []
+inside = []
+for i in range(R):
+    point = [rand(), rand()]
+    x.append(point)
+    
+for j in x:
+    inside = [in_circle(j)] 
+    
+print(sum(inside)/R)
+
+
+
